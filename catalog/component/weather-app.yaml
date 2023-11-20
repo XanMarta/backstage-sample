@@ -1,0 +1,23 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: weather-app
+  description: Weather App
+  tags:
+    - react
+    - weather
+    - frontend
+  links:
+    - url: http://bs-java-app.s3-website.ap-south-1.amazonaws.com
+      title: URL
+      icon: dashboard
+  annotations:
+    aws.amazon.com/aws-codepipeline: 'arn:aws:codepipeline:ap-south-1:179623033511:bs-java-app-codepipeline'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: frontend
+  system: demo
+  dependsOn:
+    - 'resource:weather-s3'

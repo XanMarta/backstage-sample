@@ -1,0 +1,39 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: frontend
+  description: Frontend Team
+spec:
+  type: team
+  profile:
+    email: frontend@example.com
+  parent: aps-inc
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: alex
+spec:
+  profile:
+    email: alex@example.com
+  memberOf: [frontend]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: brian
+spec:
+  profile:
+    email: brian@example.com
+  memberOf: [frontend]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: charlie
+spec:
+  profile:
+    email: charlie@example.com
+  memberOf: [frontend]

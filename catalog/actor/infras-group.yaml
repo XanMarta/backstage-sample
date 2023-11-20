@@ -1,0 +1,39 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: infras
+  description: Infras Team
+spec:
+  type: team
+  profile:
+    email: infras@example.com
+  parent: aps-inc
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: gwen
+spec:
+  profile:
+    email: gwen@example.com
+  memberOf: [infras]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: helliot
+spec:
+  profile:
+    email: helliot@example.com
+  memberOf: [infras]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: iso
+spec:
+  profile:
+    email: iso@example.com
+  memberOf: [infras]

@@ -2958,6 +2958,33 @@
     zod "^3.21.4"
     zod-to-json-schema "^3.21.4"
 
+"@backstage/plugin-bitbucket-cloud-common@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-bitbucket-cloud-common/-/plugin-bitbucket-cloud-common-0.2.14.tgz#805bdf9e16cfe07f4bdd05348a87cd030a6ced37"
+  integrity sha512-xr9ez1JQf43GSSL3S4dpFo9QTDbm3p1haJuo0c+/JYW/QAFsPH0gVrGAS/Boo3vlLYOPoGzKXrs8QmMBHL+O9A==
+  dependencies:
+    "@backstage/integration" "^1.7.2"
+    cross-fetch "^4.0.0"
+
+"@backstage/plugin-catalog-backend-module-bitbucket-cloud@^0.1.22":
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-backend-module-bitbucket-cloud/-/plugin-catalog-backend-module-bitbucket-cloud-0.1.22.tgz#4e1df5e549ff37333612b77df253674b43cfa6b5"
+  integrity sha512-Ej1qVahozTlmWbp82/OLDQimqvGd/+rfnhkJ4FhLf9eGDhv2ObE3k/yXQfgsPB3PmPcFiJwu3+0+Cn7t+2AArw==
+  dependencies:
+    "@backstage/backend-common" "^0.19.9"
+    "@backstage/backend-plugin-api" "^0.6.7"
+    "@backstage/backend-tasks" "^0.5.12"
+    "@backstage/catalog-client" "^1.4.6"
+    "@backstage/catalog-model" "^1.4.3"
+    "@backstage/config" "^1.1.1"
+    "@backstage/integration" "^1.7.2"
+    "@backstage/plugin-bitbucket-cloud-common" "^0.2.14"
+    "@backstage/plugin-catalog-common" "^1.0.18"
+    "@backstage/plugin-catalog-node" "^1.5.0"
+    "@backstage/plugin-events-node" "^0.2.16"
+    uuid "^8.0.0"
+    winston "^3.2.1"
+
 "@backstage/plugin-catalog-backend-module-scaffolder-entity-model@^0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-backend-module-scaffolder-entity-model/-/plugin-catalog-backend-module-scaffolder-entity-model-0.1.4.tgz#915eb631571f21514f4fdbd883be06aab4dddb98"
@@ -8957,6 +8984,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
 "app@link:packages/app":
   version "0.0.0"
   dependencies:
+    "@aws/aws-codeservices-plugin-for-backstage" "^0.1.3"
     "@backstage/app-defaults" "^1.4.5"
     "@backstage/catalog-model" "^1.4.3"
     "@backstage/cli" "^0.24.0"

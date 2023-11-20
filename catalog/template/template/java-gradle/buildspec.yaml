@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - ./gradlew build --scan
+
+artifacts:
+  files:
+    - '*-all.jar'
+  base-directory: 'build/libs'
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*' 
+    - '/root/.gradle/wrapper/**/*'

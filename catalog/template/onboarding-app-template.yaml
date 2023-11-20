@@ -1,0 +1,134 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: application-onboarding
+  title: Application Onboarding
+  description: Onboard new application to the system following Golden Path
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    - title: Choose repository location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - bitbucket.org
+            allowedOwners:
+              - XanMarta
+            allowedProjects:
+              - BACKSTAGE_FRONTEND
+              - BACKSTAGE_BACKEND
+    - title: Choose technology stacks
+      required:
+        - language
+        - cicd
+        - deployment_type
+      properties:
+        language:
+          title: Language
+          type: string
+          description: Languages and tools used in the project
+          default: java-maven
+          enum:
+            - java-maven
+            - java-gradle
+          enumNames:
+            - Java (with Maven)
+            - Java (with Gradle)
+        cicd:
+          title: CI/CD pipelines
+          type: string
+          description: CI/CD pipelines stacks for the repository
+          default: aws-codepipeline
+          enum:
+            - aws-codepipeline
+            - bitbucket-pipeline
+            - jenkins
+          enumName:
+            - AWS Codepipeline
+            - Bitbucket Pipeline
+            - Jenkins
+        deployment_type:
+          title: Deployment Type
+          type: string
+          description: Deployment resource of this project
+          default: ecs
+          enum:
+            - ecs
+            - ec2
+            - lambda
+            - k8s
+            - s3
+          enumName:
+            - ECS
+            - EC2
+            - Lambda function
+            - Kubernetes
+            - S3
+    - title: Additional information
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the project
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the project
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group
+
+  steps:
+    - id: fetch-template
+      name: Fetch template
+      action: fetch:plain
+      input:
+        url: ./template/${{ parameters.language }}
+    - id: fetch-catalog
+      name: Fetch Catalog
+      action: fetch:template
+      input:
+        url: ./template/catalog
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
+          repoUrl: https://bitbucket.org/${{ (parameters.repoUrl | parseRepoUrl).workspace }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
+          tag:
+            - ${{ parameters.language }}
+            - ${{ parameters.cicd }}
+            - ${{ parameters.deployment_type }}
+    - id: publish
+      name: Publish
+      action: publish:bitbucketCloud
+      input:
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

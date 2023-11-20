@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-template
+  description: A collection of all templates
+spec:
+  targets:
+    - ./template/onboarding-app-template.yaml

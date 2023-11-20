@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-component
+  description: A collection of all Components
+spec:
+  targets:
+    - ./component/sample-app.yaml
+    - ./component/weather-app.yaml

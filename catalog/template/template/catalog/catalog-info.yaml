@@ -1,0 +1,21 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name | dump }}
+  description: Sample App
+  tags: ${{ values.tag | dump }}
+  links:
+    - url: ${{ values.repoUrl | dump }}
+      title: Repository URL
+      icon: dashboard
+    - url: http://${{ values.name }}.sample.com
+      title: Application URL
+      icon: dashboard
+  annotations:
+    aws.amazon.com/aws-codepipeline: 'arn:aws:codepipeline:ap-south-1:179623033511:bs-java-app-codepipeline'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: ${{ values.owner | dump }}
+  system: demo

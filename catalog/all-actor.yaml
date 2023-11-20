@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-actor
+  description: A collection of all Groups and Users
+spec:
+  targets:
+    - ./actor/org.yaml
+    - ./actor/backend-group.yaml
+    - ./actor/frontend-group.yaml
+    - ./actor/infras-group.yaml

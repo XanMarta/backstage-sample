@@ -1,0 +1,17 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: aps-inc
+  description: The Aps Inc
+  links:
+    - url: https://www.google.com/
+      title: Website
+    - url: https://meta.wikimedia.org/wiki/
+      title: Wiki
+spec:
+  type: organization
+  profile:
+    displayName: Aps Inc
+    email: aps@example.com
+  children: []

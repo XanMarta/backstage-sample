@@ -4,8 +4,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: sample-app
-  annotations:
-    aws.amazon.com/aws-codepipeline: 'arn:aws:codepipeline:ap-south-1:179623033511:HaiTX4-sample-pipeline'
 spec:
   type: website
   lifecycle: experimental
