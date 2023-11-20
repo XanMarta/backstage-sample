@@ -47,7 +47,7 @@ scaffolder:
 catalog:
   rules:
     - allow: [Component, System, API, Resource, Location, User, Group, Template]
-  locations: {}
+  locations: []
   providers:
     bitbucketCloud:
       yourProviderId: # identifies your ingested dataset
